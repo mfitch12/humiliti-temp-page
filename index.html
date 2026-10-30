@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Humiliti LLC is building a public space for good-faith conversation. Official company site."
+    />
+    <meta name="theme-color" content="#0e1518" />
+    <title>Humiliti LLC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0e1518;
+        --ink-soft: #162126;
+        --mist: #c5d0d4;
+        --paper: #e8eef0;
+        --paper-dim: #b7c4c9;
+        --accent: #2f7a6d;
+        --accent-soft: #3d9a89;
+        --line: rgba(197, 208, 212, 0.16);
+        --glow: rgba(61, 154, 137, 0.18);
+        --radius: 0.55rem;
+        --font-display: "Fraunces", ui-serif, Georgia, serif;
+        --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        color: var(--paper);
+        font-family: var(--font-body);
+        background:
+          radial-gradient(
+            50vw 70vh at 88% -8%,
+            rgba(47, 122, 109, 0.2),
+            transparent 55%
+          ),
+          radial-gradient(
+            42vw 60vh at 4% 35%,
+            rgba(70, 98, 120, 0.24),
+            transparent 52%
+          ),
+          radial-gradient(
+            36vw 40vh at 50% 110%,
+            rgba(47, 122, 109, 0.1),
+            transparent 55%
+          ),
+          linear-gradient(165deg, #0b1114 0%, #121b20 45%, #0e1518 100%);
+        background-attachment: fixed;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body::before {
+        content: "";
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(232, 238, 240, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(232, 238, 240, 0.03) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(
+          ellipse 90% 80% at center,
+          black 35%,
+          transparent 88%
+        );
+        opacity: 0.45;
+      }
+
+      ::selection {
+        background: rgba(61, 154, 137, 0.35);
+      }
+
+      .shell {
+        position: relative;
+        z-index: 1;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+        background: color-mix(in srgb, var(--ink) 95%, transparent);
+        backdrop-filter: blur(8px);
+      }
+
+      @media (min-width: 640px) {
+        header {
+          padding: 1.25rem 2rem;
+        }
+      }
+
+      .mark {
+        display: flex;
+        align-items: baseline;
+        gap: 0.55rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .mark-name {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        letter-spacing: -0.02em;
+        color: var(--paper);
+      }
+
+      @media (min-width: 640px) {
+        .mark-name {
+          font-size: 1.5rem;
+        }
+      }
+
+      .mark-entity {
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: color-mix(in srgb, var(--paper-dim) 85%, transparent);
+      }
+
+      .status {
+        font-size: 0.75rem;
+        color: var(--paper-dim);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .status::before {
+        content: "";
+        display: inline-block;
+        width: 0.45rem;
+        height: 0.45rem;
+        margin-right: 0.45rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        box-shadow: 0 0 0 4px var(--glow);
+        vertical-align: 0.05em;
+        animation: pulse-soft 2.4s ease-in-out infinite;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 1.25rem 3.5rem;
+      }
+
+      .hero {
+        width: 100%;
+        max-width: 38rem;
+        text-align: center;
+      }
+
+      .brand {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 12vw, 5rem);
+        font-weight: 400;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: var(--paper);
+        animation: rise-in 0.55s ease-out both;
+      }
+
+      .entity {
+        margin: 0.85rem 0 0;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--paper-dim);
+        animation: rise-in 0.7s ease-out 0.08s both;
+      }
+
+      .headline {
+        margin: 1.5rem 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.25rem, 3.5vw, 1.6rem);
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: var(--accent-soft);
+        animation: rise-in 0.7s ease-out 0.14s both;
+      }
+
+      .lede {
+        margin: 1rem auto 0;
+        max-width: 28rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--paper-dim);
+        animation: rise-in 0.7s ease-out 0.2s both;
+      }
+
+      @media (min-width: 640px) {
+        .lede {
+          font-size: 1.05rem;
+        }
+      }
+
+      .rule {
+        width: 3rem;
+        height: 1px;
+        margin: 2rem auto 0;
+        border: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-soft),
+          transparent
+        );
+        opacity: 0.7;
+        animation: rise-in 0.7s ease-out 0.28s both;
+      }
+
+      .note {
+        margin: 1.25rem auto 0;
+        max-width: 26rem;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: var(--mist);
+        animation: rise-in 0.7s ease-out 0.34s both;
+      }
+
+      footer {
+        padding: 1.25rem 1.25rem 1.75rem;
+        border-top: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
+        text-align: center;
+        font-size: 0.75rem;
+        line-height: 1.6;
+        color: color-mix(in srgb, var(--paper-dim) 75%, transparent);
+      }
+
+      footer p {
+        margin: 0;
+      }
+
+      @keyframes rise-in {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse-soft {
+        0%,
+        100% {
+          opacity: 0.55;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <a class="mark" href="/" aria-current="page">
+          <span class="mark-name">humiliti</span>
+          <span class="mark-entity">LLC</span>
+        </a>
+        <p class="status">Establishing</p>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="brand">
+          <h1 id="brand" class="brand">humiliti</h1>
+          <p class="entity">Humiliti LLC</p>
+          <p class="headline">Coming soon</p>
+          <p class="lede">
+            Humiliti LLC is building a public forum for good-faith, passionate,
+            intellectually honest conversation - without ads, without harvesting
+            your data, and without Wall Street ownership.
+          </p>
+          <hr class="rule" />
+          <p class="note">
+            This is the company&rsquo;s official web presence while the product
+            is still in development. Beta release planned for Q4 2026.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; <span id="year"></span> Humiliti LLC</p>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = String(
+        new Date().getFullYear(),
+      );
+    </script>
+  </body>
+</html>
